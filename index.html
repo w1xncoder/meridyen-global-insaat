@@ -48,82 +48,30 @@
     color: #ffcc00;
   }
 
-  /* Slider Bölümü */
-  .slider-section {
-    position: relative;
+  /* Arka plan resmi */
+  .hero {
     height: 400px;
     max-width: 1000px;
     margin: 40px auto;
-    overflow: hidden;
     border-radius: 10px;
+    background-image: url('insaat.jpg'); /* burada istediğin resmi koy */
+    background-size: cover;
+    background-position: center;
+    position: relative;
     user-select: none;
   }
 
-  .slider {
-    height: 100%;
-    position: relative;
-  }
-
-  .slide {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 0;
-  }
-
-  .slide.active {
-    opacity: 1;
-    z-index: 1;
-  }
-
-  .slider-overlay {
+  .hero-text {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
     color: white;
-    text-align: center;
     text-shadow: 0 0 10px rgba(0,0,0,0.7);
     font-size: 2.5em;
     font-weight: bold;
-  }
-
-  /* Ok Butonları */
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 3em;
-    color: #ffcc00;
-    background: rgba(0,0,0,0.7);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
     text-align: center;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.3s;
-    z-index: 10;
   }
 
-  .arrow:hover {
-    background: rgba(0,0,0,0.9);
-  }
-
-  .arrow-left {
-    left: 15px;
-  }
-
-  .arrow-right {
-    right: 15px;
-  }
-
-  /* Misyon & Vizyon Bölümü */
   section.content {
     padding: 40px 20px;
     max-width: 1000px;
@@ -169,20 +117,13 @@
       margin: 10px 0 0 0;
     }
 
-    .slider-section {
+    .hero {
       height: 250px;
       margin: 20px auto;
     }
 
-    .slider-overlay {
+    .hero-text {
       font-size: 1.5em;
-    }
-
-    .arrow {
-      font-size: 2em;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
     }
   }
 </style>
@@ -203,18 +144,9 @@
   </div>
 </header>
 
-<section class="slider-section">
-  <div class="slider">
-    <img class="slide active" src="adam.jpg" loading="lazy" alt="Slider 1" />
-    <img class="slide" src="kepce.jpg" loading="lazy" alt="Slider 2" />
-    <img class="slide" src="insaat.jpg" loading="lazy" alt="Slider 3" />
-  </div>
-  <div class="slider-overlay">Meridyen Global İnşaat</div>
-
-  <!-- Ok Butonları -->
-  <div class="arrow arrow-left" id="prev">&#10094;</div>
-  <div class="arrow arrow-right" id="next">&#10095;</div>
-</section>
+<div class="hero">
+  <div class="hero-text">Meridyen Global İnşaat</div>
+</div>
 
 <section class="content">
   <div class="bolum">
@@ -231,34 +163,6 @@
 <footer>
   <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
 </footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    });
-
-    // İlk slide göster
-    showSlide(currentIndex);
-  });
-</script>
 
 </body>
 </html>
