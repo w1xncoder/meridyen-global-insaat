@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meridyen Global İnşaat</title>
 <style>
-  body {
-    margin: 0;
+  body, html {
+    margin: 0; padding: 0;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 
   header {
@@ -21,7 +19,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     position: relative;
   }
-
   .navbar {
     max-width: 1000px;
     margin: auto;
@@ -29,30 +26,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
   }
-
   .logo a img {
     height: 60px;
     display: block;
   }
-
-  .center-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: red;
-    font-size: 2em;
-    font-weight: bold;
-    user-select: none;
-    white-space: nowrap;
-  }
-
   nav {
     display: flex;
     gap: 25px;
   }
-
   nav a {
     color: white;
     text-decoration: none;
@@ -60,13 +42,11 @@
     font-weight: 600;
     transition: 0.3s;
   }
-
   nav a:hover {
     color: #ffcc00;
     text-decoration: underline;
   }
-
-  /* Hamburger styles */
+  /* Hamburger menü */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -75,26 +55,15 @@
     height: 20px;
     justify-content: space-between;
   }
-
   .hamburger div {
     height: 3px;
     background-color: white;
     border-radius: 2px;
   }
-
-  /* Mobile styles */
   @media (max-width: 600px) {
     .navbar {
       padding: 0 15px;
     }
-
-    .center-title {
-      position: static;
-      transform: none;
-      font-size: 1.5em;
-      margin-top: 10px;
-    }
-
     nav {
       position: absolute;
       top: 70px;
@@ -107,39 +76,58 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 100;
     }
-
     nav.show {
       display: flex;
     }
-
     nav a {
       padding: 15px 20px;
       border-bottom: 1px solid #444;
       margin: 0;
     }
-
     .hamburger {
       display: flex;
     }
   }
-
-  section.content {
+  /* Hero bölüm */
+  .hero-section {
+    position: relative;
+    height: 400px;
     max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-    flex: 1;
+    margin: 40px auto 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
-
-  .guven-bolumu {
-    display: flex;
-    gap: 20px;
-    background-color: #f9f9f9;
-    border-left: 5px solid #ffcc00;
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('arkaplan.jpg') center center/cover no-repeat;
+    filter: brightness(0.6);
+    z-index: 1;
+  }
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    background: white;
+    max-width: 600px;
+    margin: 80px auto 0 auto;
     padding: 20px;
     border-radius: 8px;
-    align-items: center;
+    color: red;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
   }
-
+  /* Güven bölümü */
+  .guven-bolumu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+  }
   .guven-bolumu img {
     width: 200px;
     height: auto;
@@ -147,54 +135,34 @@
     object-fit: cover;
     flex-shrink: 0;
   }
-
-  .guven-yazi {
-    flex: 1;
-  }
-
   .guven-yazi h2 {
     margin: 0 0 10px 0;
     color: #333;
   }
-
   .guven-yazi h3 {
     margin: 0 0 15px 0;
     color: #555;
     font-weight: normal;
   }
-
   .guven-yazi p {
     margin: 0;
     color: #666;
     line-height: 1.5;
   }
-
-  @media (max-width: 600px) {
-    .guven-bolumu {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .guven-bolumu img {
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 15px;
-    }
-  }
-
+  /* Misyon ve vizyon */
   .bolum {
     background-color: #f4f4f4;
     border-left: 5px solid #ffcc00;
     padding: 20px;
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
     border-radius: 8px;
+    max-width: 1000px;
   }
-
   .bolum h3 {
     margin-top: 0;
     color: #333;
   }
-
+  /* Footer */
   footer {
     background: #222;
     color: white;
@@ -203,6 +171,17 @@
     margin-top: auto;
     font-size: 14px;
     font-weight: 500;
+  }
+  @media (max-width: 600px) {
+    .guven-bolumu {
+      flex-direction: column;
+      text-align: center;
+    }
+    .guven-bolumu img {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+    }
   }
 </style>
 </head>
@@ -215,15 +194,8 @@
         <img src="mginsaat.png" alt="Logo" />
       </a>
     </div>
-    <div class="center-title">Meridyen İnşaat</div>
 
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <nav id="nav-menu">
+    <nav>
       <a href="index.html">Ana Sayfa</a>
       <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
       <a href="hizmetler.html" target="_blank">Hizmetler</a>
@@ -232,17 +204,21 @@
   </div>
 </header>
 
-<section class="content">
+<div class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-text">Meridyen İnşaat</div>
+</div>
 
-  <div class="guven-bolumu">
-    <img src="guven.jpg" alt="İnşaatta Güven" />
-    <div class="guven-yazi">
-      <h2>İnşaatta Güven</h2>
-      <h3>Meridyen İnşaat: Güven ve Kalitenin Adresi</h3>
-      <p>Firmamız, inşaat sektöründe uzun yıllara dayanan tecrübesiyle, her projede güven ve kaliteyi ön planda tutar. Müşteri memnuniyetini en üst seviyede sağlamak için çalışıyoruz.</p>
-    </div>
+<section class="guven-bolumu">
+  <img src="guven.jpg" alt="İnşaatta Güven" />
+  <div class="guven-yazi">
+    <h2>İnşaatta Güven</h2>
+    <h3>Meridyen İnşaat: Güven ve Kalitenin Adresi</h3>
+    <p>Firmamız, inşaat sektöründe uzun yıllara dayanan tecrübesiyle, her projede güven ve kaliteyi ön planda tutar. Müşteri memnuniyetini en üst seviyede sağlamak için çalışıyoruz.</p>
   </div>
+</section>
 
+<section class="content">
   <div class="bolum">
     <h3>Misyonumuz</h3>
     <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
@@ -252,7 +228,6 @@
     <h3>Vizyonumuz</h3>
     <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
   </div>
-
 </section>
 
 <footer>
@@ -260,18 +235,7 @@
 </footer>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
-
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-      navMenu.classList.remove('show');
-    }
-  });
+  // Eğer hamburger menü eklemek istersen buraya koyabilirsin
 </script>
 
 </body>
