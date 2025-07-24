@@ -5,19 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meridyen Global İnşaat</title>
 <style>
-  /* Sayfa genel arka plan resmi */
   body, html {
     margin: 0; padding: 0;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background: url('arkaplan.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #fff; /* sayfa arka planı beyaz */
     color: #333;
   }
 
   /* Üst menü */
   header {
-    background: rgba(51, 51, 51, 0.85); /* biraz transparan */
+    background: rgba(51, 51, 51, 0.85);
     color: white;
     padding: 20px 0;
     font-weight: bold;
@@ -97,20 +95,32 @@
     }
   }
 
-  /* Hero bölüm */
+  /* Hero bölüm: arka plan resmi + overlay + yazı */
   .hero-section {
+    position: relative;
     max-width: 1000px;
     margin: 60px auto 40px auto;
-    padding: 20px;
-    background: white;
+    height: 200px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    text-align: center;
-    color: red;
+    overflow: hidden;
+    user-select: none;
+  }
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://www.meridyeninsaat.com/images/9192520meridyen-banner.jpg') center center/cover no-repeat;
+    filter: brightness(0.5);
+    z-index: 0;
+  }
+  .hero-text {
+    position: relative;
+    color: white;
     font-size: 3em;
     font-weight: bold;
-    user-select: none;
-    z-index: 5;
+    text-align: center;
+    line-height: 200px; /* tam ortala */
+    z-index: 1;
   }
 
   /* Güven bölümü */
@@ -214,7 +224,7 @@
 </header>
 
 <div class="hero-section">
-  Meridyen İnşaat
+  <div class="hero-text">Meridyen İnşaat</div>
 </div>
 
 <section class="guven-bolumu">
