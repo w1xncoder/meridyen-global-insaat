@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meridyen Global İnşaat</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 <style>
   body, html {
     margin: 0; padding: 0;
@@ -20,6 +19,7 @@
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     position: relative;
+    z-index: 1100;
   }
   .navbar {
     max-width: 1000px;
@@ -56,45 +56,67 @@
     width: 25px;
     height: 20px;
     justify-content: space-between;
+    z-index: 1200;
   }
   .hamburger div {
     height: 3px;
     background-color: white;
     border-radius: 2px;
   }
+
+  /* Mobil için menu açılır sidebar ve overlay */
   @media (max-width: 600px) {
     .navbar {
       padding: 0 15px;
     }
     nav {
-      position: absolute;
-      top: 70px;
-      right: 0;
-      background: #222;  /* Tam siyah */
+      position: fixed;
+      top: 0;
+      right: -300px; /* Kapalıyken gizli */
+      width: 300px;
+      height: 100vh;
+      background: #222; /* Tam siyah */
       flex-direction: column;
-      width: 200px;
-      display: none;
-      border-radius: 0 0 0 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-      z-index: 100;
+      padding-top: 70px; /* Header yüksekliği */
+      transition: right 0.3s ease;
+      z-index: 1100;
+      box-shadow: -4px 0 8px rgba(0,0,0,0.6);
     }
     nav.show {
-      display: flex;
+      right: 0; /* Açılınca görünür */
     }
     nav a {
-      padding: 15px 20px;
+      padding: 20px;
       border-bottom: 1px solid #444;
       margin: 0;
+      font-size: 18px;
+    }
+    nav a:hover {
+      background-color: #333;
+      color: #ff0000;
     }
     .hamburger {
       display: flex;
+    }
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: none;
+    }
+    .overlay.show {
+      display: block;
     }
   }
 
   /* Hero bölüm */
   .hero-section {
     position: relative;
-    height: 300px; /* küçültüldü */
+    height: 300px;
     max-width: 1000px;
     margin: 40px auto 20px auto;
     border-radius: 10px;
@@ -163,7 +185,7 @@
   }
   .accordion-item {
     background-color: #f4f4f4;
-    border-left: 5px solid #ff0000; /* kırmızı */
+    border-left: 5px solid #ff0000;
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
@@ -188,7 +210,7 @@
   }
   .accordion-content.open {
     padding: 15px 20px;
-    max-height: 500px; /* yeterince büyük bir değer */
+    max-height: 500px;
   }
 
   /* Footer */
@@ -239,6 +261,8 @@
   </div>
 </header>
 
+<div class="overlay" onclick="toggleMenu()"></div>
+
 <div class="hero-section">
   <div class="hero-bg"></div>
   <div class="hero-text">Meridyen İnşaat</div>
@@ -266,9 +290,7 @@ Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">Vizyonumuz</div>
     <div class="accordion-content">
-      <p>Türkiye’nin en güvenilir ve tercih edilen inşaat markası olmak; müşteri memnuniyetini en üst düzeyde tutarak, çağdaş ve çevre dostu projelerle geleceği şekillendirmek.
-
-</p>
+      <p>Türkiye’nin en güvenilir ve tercih edilen inşaat markası olmak; müşteri memnuniyetini en üst düzeyde tutarak, çağdaş ve çevre dostu projelerle geleceği şekillendirmek.</p>
     </div>
   </div>
 </section>
@@ -280,7 +302,9 @@ Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine
 <script>
   function toggleMenu() {
     const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
     nav.classList.toggle('show');
+    overlay.classList.toggle('show');
   }
 
   function toggleAccordion(header) {
