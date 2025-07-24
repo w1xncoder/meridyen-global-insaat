@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Meridyen Global İnşaat</title>
   <style>
     body {
@@ -56,6 +56,7 @@
       margin: 40px auto;
       overflow: hidden;
       border-radius: 10px;
+      user-select: none;
     }
 
     .slider {
@@ -70,7 +71,8 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
+      z-index: 0;
     }
 
     .slide.active {
@@ -88,7 +90,37 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
       font-size: 2.5em;
       font-weight: bold;
+    }
+
+    /* Ok Butonları */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5em;
+      color: white;
+      background: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
       user-select: none;
+      transition: background 0.3s;
+      z-index: 3;
+    }
+
+    .arrow:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    .arrow-left {
+      left: 15px;
+    }
+
+    .arrow-right {
+      right: 15px;
     }
 
     /* Misyon & Vizyon Bölümü */
@@ -145,6 +177,13 @@
       .slider-overlay {
         font-size: 1.5em;
       }
+
+      .arrow {
+        font-size: 1.8em;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+      }
     }
   </style>
 </head>
@@ -153,7 +192,7 @@
   <header>
     <div class="navbar">
       <div class="logo">
-        <img src="mginsaat.png" alt="Logo">
+        <img src="mginsaat.png" alt="Logo" />
       </div>
       <nav>
         <a href="index.html">Ana Sayfa</a>
@@ -170,9 +209,11 @@
       <img class="slide" src="kepce.jpg" loading="lazy" alt="Slider 2" />
       <img class="slide" src="insaat.jpg" loading="lazy" alt="Slider 3" />
     </div>
-    <div class="slider-overlay">
-      Meridyen Global İnşaat
-    </div>
+    <div class="slider-overlay">Meridyen Global İnşaat</div>
+
+    <!-- Ok Butonları -->
+    <div class="arrow arrow-left" id="prev">&#10094;</div>
+    <div class="arrow arrow-right" id="next">&#10095;</div>
   </section>
 
   <section class="content">
@@ -194,6 +235,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
       let currentIndex = 0;
 
       function showSlide(index) {
@@ -202,13 +245,18 @@
         });
       }
 
-      function nextSlide() {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      });
+
+      nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % slides.length;
         showSlide(currentIndex);
-      }
+      });
 
+      // İlk slide göster
       showSlide(currentIndex);
-      setInterval(nextSlide, 4000);
     });
   </script>
 
