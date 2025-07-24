@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meridyen Global İnşaat</title>
@@ -43,7 +45,7 @@
     transition: 0.3s;
   }
   nav a:hover {
-    color: #ffcc00;
+    color: #ff0000; /* Kırmızı hover */
     text-decoration: underline;
   }
   /* Hamburger menü */
@@ -68,7 +70,7 @@
       position: absolute;
       top: 70px;
       right: 0;
-      background: #000;  /* Tam siyah oldu hamburger arka plan */
+      background: #000;  /* Tam siyah */
       flex-direction: column;
       width: 200px;
       display: none;
@@ -88,10 +90,11 @@
       display: flex;
     }
   }
+
   /* Hero bölüm */
   .hero-section {
     position: relative;
-    height: 400px;
+    height: 300px; /* küçültüldü */
     max-width: 1000px;
     margin: 40px auto 20px auto;
     border-radius: 10px;
@@ -111,7 +114,6 @@
     max-width: 600px;
     margin: 80px auto 0 auto;
     padding: 20px;
-    /* background: none; */ /* beyaz arka plan kaldırıldı */
     border-radius: 8px;
     color: red;
     font-size: 3em;
@@ -120,6 +122,7 @@
     user-select: none;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
   }
+
   /* Güven bölümü */
   .guven-bolumu {
     display: flex;
@@ -138,7 +141,7 @@
   }
   .guven-yazi h2 {
     margin: 0 0 10px 0;
-    color: red;  /* kırmızı yapıldı */
+    color: red;
     font-size: 1.5em;
   }
   .guven-yazi h3 {
@@ -151,19 +154,43 @@
     color: #666;
     line-height: 1.5;
   }
-  /* Misyon ve vizyon */
-  .bolum {
-    background-color: #f4f4f4;
-    border-left: 5px solid #ffcc00;
-    padding: 20px;
-    margin: 30px auto 0 auto;
-    border-radius: 8px;
+
+  /* Akordeon (Misyon & Vizyon) */
+  .accordion {
     max-width: 1000px;
+    margin: 30px auto 0 auto;
+    padding: 0 20px;
   }
-  .bolum h3 {
-    margin-top: 0;
+  .accordion-item {
+    background-color: #f4f4f4;
+    border-left: 5px solid #ff0000; /* kırmızı */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  .accordion-header {
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #b30000;
+    cursor: pointer;
+    user-select: none;
+  }
+  .accordion-header:hover {
+    background-color: #ffd6d6;
+  }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
     color: #333;
+    transition: max-height 0.3s ease, padding 0.3s ease;
   }
+  .accordion-content.open {
+    padding: 15px 20px;
+    max-height: 500px; /* yeterince büyük bir değer */
+  }
+
   /* Footer */
   footer {
     background: #222;
@@ -228,15 +255,19 @@ Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine
   </div>
 </section>
 
-<section class="content">
-  <div class="bolum">
-    <h3>Misyonumuz</h3>
-    <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+<section class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Misyonumuz</div>
+    <div class="accordion-content">
+      <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+    </div>
   </div>
 
-  <div class="bolum">
-    <h3>Vizyonumuz</h3>
-    <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Vizyonumuz</div>
+    <div class="accordion-content">
+      <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+    </div>
   </div>
 </section>
 
@@ -248,6 +279,20 @@ Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine
   function toggleMenu() {
     const nav = document.querySelector('nav');
     nav.classList.toggle('show');
+  }
+
+  function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+    if (isOpen) {
+      content.classList.remove('open');
+    } else {
+      // Aynı anda sadece bir akordeon açık kalacak şekilde:
+      document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+        openContent.classList.remove('open');
+      });
+      content.classList.add('open');
+    }
   }
 </script>
 
