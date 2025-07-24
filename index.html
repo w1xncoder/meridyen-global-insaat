@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meridyen Global İnşaat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 20px 0;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffcc00;
+    }
+
+    /* Slider Bölümü */
+    .slider-section {
+      position: relative;
+      height: 400px;
+      max-width: 1000px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slider {
+      height: 100%;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      top:0; left:0; width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slider-overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: white;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      font-size: 2.5em;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    /* Misyon & Vizyon Bölümü */
+    section.content {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      flex: 1;
+    }
+
+    .bolum {
+      background-color: #f4f4f4;
+      border-left: 5px solid #ffcc00;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+    }
+
+    .bolum h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0 0 0;
+      }
+
+      .slider-section {
+        height: 250px;
+        margin: 20px auto;
+      }
+
+      .slider-overlay {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="img/mginsaat.png" alt="Logo">
+      </div>
+      <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
+        <a href="hizmetler.html" target="_blank">Hizmetler</a>
+        <a href="iletisim.html" target="_blank">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="slider-section">
+    <div class="slider">
+      <img class="slide active" src="img/slider1.jpg" loading="lazy" alt="Slider 1" />
+      <img class="slide" src="img/slider2.jpg" loading="lazy" alt="Slider 2" />
+      <img class="slide" src="img/slider3.jpg" loading="lazy" alt="Slider 3" />
+    </div>
+    <div class="slider-overlay">
+      Meridyen Global İnşaat
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="bolum">
+      <h3>Misyonumuz</h3>
+      <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+    </div>
+
+    <div class="bolum">
+      <h3>Vizyonumuz</h3>
+      <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    showSlide(currentIndex);
+    setInterval(nextSlide, 4000);
+  </script>
+
+</body>
+</html>
