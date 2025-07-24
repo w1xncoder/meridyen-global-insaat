@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hakkımızda - Meridyen Global İnşaat</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #111;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: #333;
+    color: white;
+    padding: 15px 20px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  header a.back-link {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 12px;
+    font-weight: bold;
+    font-size: 1.6rem;
+    user-select: none;
+  }
+
+  header a.back-link svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    transition: fill 0.3s ease;
+  }
+
+  header a.back-link:hover svg {
+    fill: #ff0000;
+    stroke: #ff0000;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    user-select: none;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: 1000px;
+    margin: 40px auto 60px auto;
+    text-align: center;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 30px 20px 40px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  main h1 {
+    font-size: 3rem;
+    user-select: none;
+    margin-bottom: 20px;
+  }
+
+  main p.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .banner-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin-top: 30px;
+  }
+
+  footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    header a.back-link {
+      font-size: 1.3rem;
+      left: 15px;
+    }
+
+    header a.back-link svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+    }
+
+    main h1 {
+      font-size: 2rem;
+    }
+
+    main {
+      margin: 20px 10px 40px 10px;
+      padding: 20px 15px 30px 15px;
+    }
+
+    main p.description {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-link" aria-label="Ana sayfaya dön">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    </svg>
+    Geri
+  </a>
+  <h1>Hakkımızda</h1>
+</header>
+
+<main>
+  <h1>Hakkımızda</h1>
+  <p class="description">
+    Meridyen Global İnşaat, inşaat sektöründe kalite ve güvenin simgesi olarak yıllardır faaliyet göstermektedir. Müşteri memnuniyetini her zaman ön planda tutarak, yenilikçi ve sürdürülebilir çözümler sunmak için çalışıyoruz. Projelerimizde en yüksek standartları uyguluyor, sağlam ve estetik yapılar inşa ediyoruz.  
+  </p>
+  <img src="https://www.meridyeninsaat.com/images/9192520meridyen-banner.jpg" alt="Meridyen İnşaat Banner" class="banner-img" />
+</main>
+
+<footer>
+  &copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır
+</footer>
+
+</body>
+</html>
