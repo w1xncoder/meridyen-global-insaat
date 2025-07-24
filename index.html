@@ -8,9 +8,9 @@
   body {
     margin: 0;
     font-family: Arial, sans-serif;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
   }
 
   header {
@@ -19,24 +19,42 @@
     padding: 20px 0;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    position: relative;
   }
 
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     max-width: 1000px;
     margin: auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
   }
 
-  .logo img {
+  .logo a img {
     height: 60px;
+    display: block;
+  }
+
+  .center-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: red;
+    font-size: 2em;
+    font-weight: bold;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  nav {
+    display: flex;
+    gap: 25px;
   }
 
   nav a {
     color: white;
-    margin-left: 25px;
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
@@ -44,39 +62,124 @@
   }
 
   nav a:hover {
-    text-decoration: underline;
     color: #ffcc00;
+    text-decoration: underline;
   }
 
-  /* Arka plan resmi */
-  .hero {
-    height: 400px;
-    max-width: 1000px;
-    margin: 40px auto;
-    border-radius: 10px;
-    background-image: url('insaat.jpg'); /* burada istediğin resmi koy */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    user-select: none;
+  /* Hamburger styles */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+    justify-content: space-between;
   }
 
-  .hero-text {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    font-size: 2.5em;
-    font-weight: bold;
-    text-align: center;
+  .hamburger div {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 600px) {
+    .navbar {
+      padding: 0 15px;
+    }
+
+    .center-title {
+      position: static;
+      transform: none;
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: #333;
+      flex-direction: column;
+      width: 200px;
+      display: none;
+      border-radius: 0 0 0 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+
+    nav.show {
+      display: flex;
+    }
+
+    nav a {
+      padding: 15px 20px;
+      border-bottom: 1px solid #444;
+      margin: 0;
+    }
+
+    .hamburger {
+      display: flex;
+    }
   }
 
   section.content {
-    padding: 40px 20px;
     max-width: 1000px;
     margin: auto;
+    padding: 40px 20px;
     flex: 1;
+  }
+
+  .guven-bolumu {
+    display: flex;
+    gap: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #ffcc00;
+    padding: 20px;
+    border-radius: 8px;
+    align-items: center;
+  }
+
+  .guven-bolumu img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .guven-yazi {
+    flex: 1;
+  }
+
+  .guven-yazi h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+
+  .guven-yazi h3 {
+    margin: 0 0 15px 0;
+    color: #555;
+    font-weight: normal;
+  }
+
+  .guven-yazi p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .guven-bolumu {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .guven-bolumu img {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+    }
   }
 
   .bolum {
@@ -101,31 +204,6 @@
     font-size: 14px;
     font-weight: 500;
   }
-
-  @media (max-width: 600px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      display: block;
-      margin: 10px 0 0 0;
-    }
-
-    .hero {
-      height: 250px;
-      margin: 20px auto;
-    }
-
-    .hero-text {
-      font-size: 1.5em;
-    }
-  }
 </style>
 </head>
 <body>
@@ -133,9 +211,19 @@
 <header>
   <div class="navbar">
     <div class="logo">
-      <img src="mginsaat.png" alt="Logo" />
+      <a href="index.html">
+        <img src="mginsaat.png" alt="Logo" />
+      </a>
     </div>
-    <nav>
+    <div class="center-title">Meridyen İnşaat</div>
+
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <nav id="nav-menu">
       <a href="index.html">Ana Sayfa</a>
       <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
       <a href="hizmetler.html" target="_blank">Hizmetler</a>
@@ -144,11 +232,17 @@
   </div>
 </header>
 
-<div class="hero">
-  <div class="hero-text">Meridyen Global İnşaat</div>
-</div>
-
 <section class="content">
+
+  <div class="guven-bolumu">
+    <img src="guven.jpg" alt="İnşaatta Güven" />
+    <div class="guven-yazi">
+      <h2>İnşaatta Güven</h2>
+      <h3>Meridyen İnşaat: Güven ve Kalitenin Adresi</h3>
+      <p>Firmamız, inşaat sektöründe uzun yıllara dayanan tecrübesiyle, her projede güven ve kaliteyi ön planda tutar. Müşteri memnuniyetini en üst seviyede sağlamak için çalışıyoruz.</p>
+    </div>
+  </div>
+
   <div class="bolum">
     <h3>Misyonumuz</h3>
     <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
@@ -158,11 +252,27 @@
     <h3>Vizyonumuz</h3>
     <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
   </div>
+
 </section>
 
 <footer>
   <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
 </footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show');
+    }
+  });
+</script>
 
 </body>
 </html>
