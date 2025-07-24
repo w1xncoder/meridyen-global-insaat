@@ -1,264 +1,264 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meridyen Global İnşaat</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meridyen Global İnşaat</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-    header {
-      background: #333;
-      color: white;
-      padding: 20px 0;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
+  header {
+    background: #333;
+    color: white;
+    padding: 20px 0;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
 
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 20px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+    color: #ffcc00;
+  }
+
+  /* Slider Bölümü */
+  .slider-section {
+    position: relative;
+    height: 400px;
+    max-width: 1000px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    user-select: none;
+  }
+
+  .slider {
+    height: 100%;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+  }
+
+  .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .slider-overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+
+  /* Ok Butonları */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3em;
+    color: #ffcc00;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 10;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.9);
+  }
+
+  .arrow-left {
+    left: 15px;
+  }
+
+  .arrow-right {
+    right: 15px;
+  }
+
+  /* Misyon & Vizyon Bölümü */
+  section.content {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+    flex: 1;
+  }
+
+  .bolum {
+    background-color: #f4f4f4;
+    border-left: 5px solid #ffcc00;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+  }
+
+  .bolum h3 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1000px;
-      margin: auto;
-      padding: 0 20px;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .logo img {
-      height: 60px;
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
-      color: white;
-      margin-left: 25px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      transition: 0.3s;
+      display: block;
+      margin: 10px 0 0 0;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-      color: #ffcc00;
-    }
-
-    /* Slider Bölümü */
     .slider-section {
-      position: relative;
-      height: 400px;
-      max-width: 1000px;
-      margin: 40px auto;
-      overflow: hidden;
-      border-radius: 10px;
-      user-select: none;
-    }
-
-    .slider {
-      height: 100%;
-      position: relative;
-    }
-
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      z-index: 0;
-    }
-
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
+      height: 250px;
+      margin: 20px auto;
     }
 
     .slider-overlay {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      color: white;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-      font-size: 2.5em;
-      font-weight: bold;
+      font-size: 1.5em;
     }
 
-    /* Ok Butonları */
     .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2.5em;
-      color: white;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      line-height: 45px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s;
-      z-index: 3;
+      font-size: 2em;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
     }
-
-    .arrow:hover {
-      background: rgba(0,0,0,0.6);
-    }
-
-    .arrow-left {
-      left: 15px;
-    }
-
-    .arrow-right {
-      right: 15px;
-    }
-
-    /* Misyon & Vizyon Bölümü */
-    section.content {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      flex: 1;
-    }
-
-    .bolum {
-      background-color: #f4f4f4;
-      border-left: 5px solid #ffcc00;
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 8px;
-    }
-
-    .bolum h3 {
-      margin-top: 0;
-      color: #333;
-    }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: auto;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    @media (max-width: 600px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        margin-top: 10px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0 0 0;
-      }
-
-      .slider-section {
-        height: 250px;
-        margin: 20px auto;
-      }
-
-      .slider-overlay {
-        font-size: 1.5em;
-      }
-
-      .arrow {
-        font-size: 1.8em;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <img src="mginsaat.png" alt="Logo" />
-      </div>
-      <nav>
-        <a href="index.html">Ana Sayfa</a>
-        <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
-        <a href="hizmetler.html" target="_blank">Hizmetler</a>
-        <a href="iletisim.html" target="_blank">İletişim</a>
-      </nav>
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="mginsaat.png" alt="Logo" />
     </div>
-  </header>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
+      <a href="hizmetler.html" target="_blank">Hizmetler</a>
+      <a href="iletisim.html" target="_blank">İletişim</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="slider-section">
-    <div class="slider">
-      <img class="slide active" src="adam.jpg" loading="lazy" alt="Slider 1" />
-      <img class="slide" src="kepce.jpg" loading="lazy" alt="Slider 2" />
-      <img class="slide" src="insaat.jpg" loading="lazy" alt="Slider 3" />
-    </div>
-    <div class="slider-overlay">Meridyen Global İnşaat</div>
+<section class="slider-section">
+  <div class="slider">
+    <img class="slide active" src="adam.jpg" loading="lazy" alt="Slider 1" />
+    <img class="slide" src="kepce.jpg" loading="lazy" alt="Slider 2" />
+    <img class="slide" src="insaat.jpg" loading="lazy" alt="Slider 3" />
+  </div>
+  <div class="slider-overlay">Meridyen Global İnşaat</div>
 
-    <!-- Ok Butonları -->
-    <div class="arrow arrow-left" id="prev">&#10094;</div>
-    <div class="arrow arrow-right" id="next">&#10095;</div>
-  </section>
+  <!-- Ok Butonları -->
+  <div class="arrow arrow-left" id="prev">&#10094;</div>
+  <div class="arrow arrow-right" id="next">&#10095;</div>
+</section>
 
-  <section class="content">
-    <div class="bolum">
-      <h3>Misyonumuz</h3>
-      <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
-    </div>
+<section class="content">
+  <div class="bolum">
+    <h3>Misyonumuz</h3>
+    <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+  </div>
 
-    <div class="bolum">
-      <h3>Vizyonumuz</h3>
-      <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
-    </div>
-  </section>
+  <div class="bolum">
+    <h3>Vizyonumuz</h3>
+    <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
+</footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const slides = document.querySelectorAll('.slide');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      let currentIndex = 0;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let currentIndex = 0;
 
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-      }
-
-      prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        showSlide(currentIndex);
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
       });
+    }
 
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
-      });
-
-      // İlk slide göster
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
     });
-  </script>
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    // İlk slide göster
+    showSlide(currentIndex);
+  });
+</script>
 
 </body>
 </html>
