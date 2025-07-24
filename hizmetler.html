@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meridyen Global İnşaat - Hizmetler</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background: white;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .navbar {
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .back-link {
+      position: absolute;
+      left: 20px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.8em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .back-arrow {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(135deg);
+      margin-right: 5px;
+      border-radius: 2px;
+    }
+
+    .back-link:hover {
+      color: #ff0000;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto 60px auto;
+      padding: 0 20px;
+      background: white;
+      flex-grow: 1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #b30000;
+      font-weight: 900;
+      font-size: 2.5em;
+      user-select: none;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .service-card {
+      background: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 25px 20px;
+      text-align: center;
+      color: #222;
+      user-select: none;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      margin: 0 0 15px 0;
+      color: #b30000;
+      font-size: 1.3em;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #555;
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .back-link {
+        font-size: 1.6em;
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="index.html" class="back-link" aria-label="Ana Sayfaya Dön">
+      <span class="back-arrow"></span> Geri
+    </a>
+    <h1>Hizmetler</h1>
+  </div>
+</header>
+
+<main>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Proje Yönetimi</h3>
+      <p>Her aşamada titizlikle yürütülen, zamanında ve bütçeye uygun teslimatlar.</p>
+    </div>
+    <div class="service-card">
+      <h3>Yapı Denetimi</h3>
+      <p>Kalite standartlarına uygunluk ve güvenliğin ön planda tutulması.</p>
+    </div>
+    <div class="service-card">
+      <h3>İnşaat Taahhüt</h3>
+      <p>Modern teknolojilerle güçlü ve dayanıklı yapılar inşa ediyoruz.</p>
+    </div>
+    <div class="service-card">
+      <h3>Danışmanlık</h3>
+      <p>Uzman kadromuzla en doğru çözümleri sunuyoruz.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Meridyen Global İnşaat - Tüm Hakları Saklıdır</p>
+</footer>
+
+</body>
+</html>
