@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meridyen Global İnşaat</title>
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
 <style>
   body, html {
     margin: 0; padding: 0;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background: #fff; /* sayfa arka planı beyaz */
-    color: #333;
   }
 
-  /* Üst menü */
   header {
-    background: rgba(51, 51, 51, 0.85);
+    background: #333;
     color: white;
     padding: 20px 0;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     position: relative;
-    z-index: 10;
   }
   .navbar {
     max-width: 1000px;
@@ -51,7 +50,6 @@
     color: #ffcc00;
     text-decoration: underline;
   }
-
   /* Hamburger menü */
   .hamburger {
     display: none;
@@ -66,7 +64,6 @@
     background-color: white;
     border-radius: 2px;
   }
-
   @media (max-width: 600px) {
     .navbar {
       padding: 0 15px;
@@ -75,7 +72,7 @@
       position: absolute;
       top: 70px;
       right: 0;
-      background: rgba(51,51,51,0.95);
+      background: #000; /* Tam siyah yapıldı */
       flex-direction: column;
       width: 200px;
       display: none;
@@ -96,106 +93,62 @@
     }
   }
 
-  /* Hero bölüm: arka plan resmi + overlay + yazı */
-  .hero-section {
-    position: relative;
+  /* Hakkımızda bölümü ve accordion */
+  .content {
     max-width: 1000px;
-    margin: 60px auto 40px auto;
-    height: 200px;
-    border-radius: 8px;
-    overflow: hidden;
-    user-select: none;
-  }
-  .hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('https://www.meridyeninsaat.com/images/9192520meridyen-banner.jpg') center center/cover no-repeat;
-    filter: brightness(0.5);
-    z-index: 0;
-  }
-  .hero-text {
-    position: relative;
-    color: red;
-    font-size: 3em;
-    font-weight: bold;
-    text-align: center;
-    line-height: 200px; /* tam ortala */
-    z-index: 1;
-  }
-
-  /* Güven bölümü */
-  .guven-bolumu {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
+    margin: 40px auto;
     padding: 0 20px;
-    background: rgba(255 255 255 / 0.9);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  .guven-bolumu img {
-    width: 200px;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .guven-yazi h2 {
-    margin: 0 0 5px 0;
-    color: red;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  .guven-yazi h3 {
-    margin: 0 0 15px 0;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.8em;
-  }
-  .guven-yazi p {
-    margin: 0;
-    color: #555;
-    line-height: 1.5;
   }
 
-  /* Misyon ve vizyon */
-  .bolum {
-    background-color: #f4f4f4;
-    border-left: 5px solid #ffcc00;
-    padding: 20px;
-    margin: 0 auto 40px auto;
-    border-radius: 8px;
-    max-width: 1000px;
+  .accordion {
+    margin-top: 20px;
   }
-  .bolum h3 {
-    margin-top: 0;
-    color: #333;
+
+  .accordion-btn {
+    background: #b30000; /* koyu kırmızı */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .accordion-btn:hover {
+    background: #ff0000; /* parlak kırmızı hover */
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #f9d6d6; /* açık kırmızı ton */
+    padding: 0 20px;
+    border-left: 5px solid #b30000;
+    border-radius: 0 0 5px 5px;
+    color: #800000;
+  }
+
+  .accordion-content p {
+    margin: 15px 0;
+  }
+
+  .accordion-btn.active + .accordion-content {
+    max-height: 200px;
+    padding: 15px 20px;
   }
 
   /* Footer */
   footer {
-    background: rgba(34, 34, 34, 0.9);
+    background: #222;
     color: white;
     text-align: center;
     padding: 20px;
-    margin-top: auto;
     font-size: 14px;
     font-weight: 500;
-  }
-
-  @media (max-width: 600px) {
-    .guven-bolumu {
-      flex-direction: column;
-      text-align: center;
-    }
-    .guven-bolumu img {
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 15px;
-    }
   }
 </style>
 </head>
@@ -209,45 +162,36 @@
       </a>
     </div>
 
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
     <nav>
       <a href="index.html">Ana Sayfa</a>
       <a href="hakkimizda.html" target="_blank">Hakkımızda</a>
       <a href="hizmetler.html" target="_blank">Hizmetler</a>
       <a href="iletisim.html" target="_blank">İletişim</a>
     </nav>
+
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </header>
 
-<div class="hero-section">
-  <div class="hero-text">Meridyen İnşaat</div>
-</div>
-
-<section class="guven-bolumu">
-  <img src="adam.jpg" alt="İnşaatta Güven" />
-  <div class="guven-yazi">
-    <h2>İnşaatta Güven</h2>
-    <h3>Meridyen İnşaat: Güven ve Kalitenin Adresi</h3>
-    <p>İnşaat sektörü, bir ülkenin gelişimi için hayati bir öneme sahiptir. Bu sektörde faaliyet gösteren birçok firma arasında öne çıkan Meridyen İnşaat, yıllardır güvenilirlik ve kalite odaklı çalışmalarıyla tanınan bir şirkettir. Meridyen İnşaat, inşaat sektöründe öncü bir marka olmanın yanı sıra müşteri memnuniyetini de ön planda tutan bir anlayışla hareket etmektedir.
-
-Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine başlarken müşterilerine tam bir güvence sunmayı hedeflemekte ve bu güveni sağlamak için çalışmaktadır. Meridyen İnşaat, tüm projelerinde en yüksek kalite standartlarını uygulayarak müşterilerine güven veren yapılar inşa etmektedir. İnşaat sürecinde, gerekli olan tüm izinleri almak ve yapılan çalışmaları düzenli olarak denetlemek gibi önlemlerle güvenli bir ortam sağlamaktadır.</p>
-  </div>
-</section>
-
 <section class="content">
-  <div class="bolum">
-    <h3>Misyonumuz</h3>
-    <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+  <h2>Hakkımızda</h2>
+  
+  <div class="accordion">
+    <button class="accordion-btn">Misyonumuz</button>
+    <div class="accordion-content">
+      <p>Kaliteli malzeme, uzman ekip ve zamanında teslimat prensibiyle sektöre güven katmak.</p>
+    </div>
   </div>
 
-  <div class="bolum">
-    <h3>Vizyonumuz</h3>
-    <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+  <div class="accordion">
+    <button class="accordion-btn">Vizyonumuz</button>
+    <div class="accordion-content">
+      <p>Türkiye’nin her noktasında bilinen, güvenilen ve tercih edilen bir inşaat markası olmak.</p>
+    </div>
   </div>
 </section>
 
@@ -261,6 +205,20 @@ Güven, Meridyen İnşaat'ın temel değerlerinden biridir. Şirket, projelerine
 
   hamburger.addEventListener('click', () => {
     nav.classList.toggle('show');
+  });
+
+  const accBtns = document.querySelectorAll('.accordion-btn');
+
+  accBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
+      if (btn.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = 0;
+      }
+    });
   });
 </script>
 
