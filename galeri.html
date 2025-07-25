@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,14 +29,20 @@
       border-bottom: 2px solid #555;
     }
 
-    .back-button {
+    .svg-back-button {
       position: absolute;
       left: 20px;
       top: 50%;
       transform: translateY(-50%);
-      color: #f0f0f0;
       text-decoration: none;
-      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .svg-back-button svg {
+      width: 28px;
+      height: 28px;
+      stroke: #f0f0f0;
     }
 
     .gallery {
@@ -81,7 +87,7 @@
         font-size: 22px;
         padding: 20px 10px;
       }
-      
+
       .gallery {
         display: flex;
         flex-direction: column;
@@ -92,7 +98,11 @@
 <body>
 
   <header>
-    <a href="index.html" class="back-button" aria-label="Ana Sayfaya Dön">&#8592; Geri</a>
+    <a href="index.html" class="svg-back-button" aria-label="Ana Sayfaya Dön">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </a>
     Meridyen İnşaat - Galeri
   </header>
 
