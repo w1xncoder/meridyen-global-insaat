@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projeler</title>
+  <style>
+    body {
+      background-color: #eee;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: #eee;
+      padding: 15px 20px;
+      flex-shrink: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .geri-btn {
+      position: absolute;
+      left: 20px;
+      background-color: #333;
+      color: #eee;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 14px;
+    }
+
+    .geri-btn::before {
+      content: "◀ ";
+      font-size: 16px;
+    }
+
+    .geri-btn:hover {
+      background-color: #999;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: normal;
+      font-size: 24px;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .accordion {
+      flex: 1 1 45%;
+      min-width: 300px;
+      border-radius: 8px;
+      background-color: #eee;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      padding: 15px 20px;
+      cursor: pointer;
+      background-color: #333;
+      user-select: none;
+      font-size: 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-header:hover {
+      background-color: #333;
+    }
+
+    .accordion-header::after {
+      content: "+";
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      background-color: #333;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 20px;
+      padding-top: 0;
+      padding-bottom: 0;
+      display: block;
+    }
+
+    .project {
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .project-desc {
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .project-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .accordion {
+        flex: 1 1 100%;
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="geri-btn" onclick="window.location.href='index.html'">Geri</button>
+    <h1>Projeler</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="accordion" id="devam-eden">
+        <div class="accordion-header">Devam Eden Projeler</div>
+        <div class="accordion-content">
+          <div class="project">
+            <div class="project-title">Antalya Fi Yapı</div>
+            <div class="project-desc">
+              Antalya'da devam eden büyük bir yapı projesi. Modern mimari ve yüksek kalite ön planda.
+            </div>
+            <img src="https://via.placeholder.com/600x300?text=Antalya+Fi+Yap%C4%B1" alt="Antalya Fi Yapı" class="project-img" />
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="devam-etmeyen">
+        <div class="accordion-header">Tamamlanan Projeler</div>
+        <div class="accordion-content">
+          <div class="project">
+            <div class="project-title">İzmir Sahil Projesi</div>
+            <div class="project-desc">
+              İzmir'deki sahil düzenleme projesi çeşitli nedenlerle durdurulmuştur.
+            </div>
+            <img src="https://via.placeholder.com/600x300?text=İzmir+Sahil+Projesi" alt="İzmir Sahil Projesi" class="project-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Meridyen İnşaat. Tüm hakları saklıdır.
+  </footer>
+
+  <script>
+    const headers = document.querySelectorAll('.accordion-header');
+
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        headers.forEach(h => {
+          if (h !== header && h.classList.contains('active')) {
+            h.classList.remove('active');
+            const content = h.nextElementSibling;
+            content.style.maxHeight = null;
+            content.style.paddingTop = '0';
+            content.style.paddingBottom = '0';
+          }
+        });
+
+        header.classList.toggle('active');
+        const content = header.nextElementSibling;
+
+        if (header.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.paddingTop = '15px';
+          content.style.paddingBottom = '15px';
+        } else {
+          content.style.maxHeight = null;
+          content.style.paddingTop = '0';
+          content.style.paddingBottom = '0';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
