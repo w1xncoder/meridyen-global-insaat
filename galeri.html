@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri - Meridyen İnşaat</title>
+  <style>
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body {
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #f0f0f0;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 28px;
+      font-weight: bold;
+      background-color: #444;
+      border-bottom: 2px solid #555;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #f0f0f0;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-item {
+      background-color: #222;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #444;
+      font-size: 14px;
+      color: #ccc;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 22px;
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-button" aria-label="Ana Sayfaya Dön">&#8592; Geri</a>
+    Meridyen İnşaat - Galeri
+  </header>
+
+  <section class="gallery">
+    <div class="gallery-item">
+      <img src="WhatsApp Görsel 2025-07-25 saat 21.23.51_f22ac456.jpg" alt="İnşaat Görsel 1" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="images.jpg" alt="İnşaat Görsel 2" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="Construction-1607692.jpg" alt="İnşaat Görsel 3" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="images (1).jpg" alt="İnşaat Görsel 4" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="1685021219842.jpeg" alt="İnşaat Görsel 5" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="pexels-photo-1463917.jpeg" alt="İnşaat Görsel 6" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="unnamed.jpg" alt="İnşaat Görsel 7" loading="lazy" />
+    </div>
+    <div class="gallery-item">
+      <img src="duş.jpg" alt="İnşaat Görsel 8" loading="lazy" />
+    </div>
+  </section>
+
+  <footer>© 2025 Meridyen İnşaat. Tüm hakları saklıdır.</footer>
+
+</body>
+</html>
