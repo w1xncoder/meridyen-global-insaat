@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
@@ -213,6 +213,32 @@
     max-height: 500px;
   }
 
+  /* Referanslar bölümü */
+  .referanslar {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .referanslar h2 {
+    font-size: 1.8em;
+    color: #b30000;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .referans-banner img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .referans-banner img:hover {
+    transform: scale(1.01);
+  }
+
   /* Footer */
   footer {
     background: #222;
@@ -251,7 +277,7 @@
       <a href="hizmetler.html" >Hizmetler</a>
       <a href="iletisim.html" >İletişim</a>
       <a href="galeri.html" >Galeri</a>
-<a href="projeler.html" >Projeler</a>
+      <a href="projeler.html" >Projeler</a>
     </nav>
 
     <div class="hamburger" onclick="toggleMenu()">
@@ -293,6 +319,14 @@ Güven, Meridyen Global İnşaat'ın temel değerlerinden biridir. Şirket, proj
     <div class="accordion-content">
       <p>Türkiye’nin en güvenilir ve tercih edilen inşaat markası olmak; müşteri memnuniyetini en üst düzeyde tutarak, çağdaş ve çevre dostu projelerle geleceği şekillendirmek.</p>
     </div>
+  </div>
+</section>
+
+<!-- Referanslarımız bölümü -->
+<section class="referanslar">
+  <h2>Referanslarımız</h2>
+  <div class="referans-banner">
+    <img src="img/referanslar.jpg" alt="Referanslarımız" />
   </div>
 </section>
 
